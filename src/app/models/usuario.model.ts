@@ -1,5 +1,6 @@
-import { RouterLink } from "@angular/router";
+import { environment } from "src/environments/environment";
 
+const base_url = environment.base_url;
 export class Usuario {
     constructor(
         public nombre:String,
@@ -9,7 +10,12 @@ export class Usuario {
         public google?:boolean,
         public role?:string,
         public uid?:string,
-    ){
-
+    ){}
+    get ImageUrl(){
+        if(this.img){
+            if (this.img.includes('https')){ return this.img; } 
+            return `${base_url}/uploads/usuarios/${this.img}`;
+        }
+        return `${base_url}/uploads/usuarios/no-img`;
     }
 }
