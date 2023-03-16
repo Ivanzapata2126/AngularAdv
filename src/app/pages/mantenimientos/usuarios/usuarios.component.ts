@@ -59,7 +59,7 @@ export class UsuariosComponent implements OnInit,OnDestroy{
 
   buscar(termino:string){
     if(termino != ''){
-      return this.busquedasService.buscar('usuarios',termino).subscribe(resp => this.usuarios = resp);
+      return this.busquedasService.buscar('usuarios',termino).subscribe((resp:Usuario[]) => this.usuarios = resp);
     }
     return this.usuarios = this.usuariosTemp;
   }
